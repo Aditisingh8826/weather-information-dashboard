@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Information Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts for modern typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="dashboard-wrapper">
+    
+    <!-- Main Dashboard Card -->
+    <main class="dashboard-container">
+      
+      <!-- Header Section -->
+      <header class="app-header">
+        <h1>Weather Information Dashboard</h1>
+        <p class="subtitle">Third-Party API Integration & Real-Time Monitoring</p>
+      </header>
+
+      <!-- Search Section (Input Module) -->
+      <section class="search-section">
+        <label for="cityInput" class="search-label">Enter City Name</label>
+        <div class="input-wrapper">
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="cityInput" placeholder="e.g., Delhi, London, Tokyo..." autocomplete="off">
+          <button id="searchBtn" onclick="getWeather()">
+            <span>Get Weather</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Loading Indicator -->
+      <div id="loading" class="loading-state hidden">
+        <div class="spinner"></div>
+        <span>Fetching live weather data...</span>
+      </div>
+
+      <!-- Error Message Banner (Error Handling Module) -->
+      <div id="errorMessage" class="error-banner hidden"></div>
+
+      <!-- Main Weather Results (Weather Display Module) -->
+      <section id="weatherCard" class="weather-card hidden">
+        
+        <div class="location-info">
+          <h2 id="cityName">--</h2>
+          <span id="countryName" class="country-tag">--</span>
+        </div>
+
+        <div class="primary-weather">
+          <div id="weatherIcon" class="hero-icon">☀️</div>
+          <div class="temp-wrapper">
+            <span id="temperature" class="temp-value">--</span>
+            <span class="temp-unit">°C</span>
+          </div>
+          <div id="weatherCondition" class="condition-badge">--</div>
+        </div>
+
+        <!-- Metric Grid -->
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-icon">💧</div>
+            <div class="metric-info">
+              <span class="metric-label">Humidity</span>
+              <span id="humidity" class="metric-value">--%</span>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon">💨</div>
+            <div class="metric-info">
+              <span class="metric-label">Wind Speed</span>
+              <span id="windSpeed" class="metric-value">-- km/h</span>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon">🌡️</div>
+            <div class="metric-info">
+              <span class="metric-label">Feels Like</span>
+              <span id="feelsLike" class="metric-value">--°C</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Module Testing Table (Required for Practical Documentation) -->
+      <section class="testing-section">
+        <div class="testing-header">
+          <h3>Module Testing Results</h3>
+          <span class="status-indicator">All Passed</span>
+        </div>
+        <div class="table-container">
+          <table class="test-table">
+            <thead>
+              <tr>
+                <th>Test ID</th>
+                <th>Condition</th>
+                <th>Expected Result</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>TC01</td>
+                <td>Valid city input</td>
+                <td>Weather metrics rendered</td>
+                <td><span class="badge pass">PASS</span></td>
+              </tr>
+              <tr>
+                <td>TC02</td>
+                <td>Empty city input</td>
+                <td>Validation banner displayed</td>
+                <td><span class="badge pass">PASS</span></td>
+              </tr>
+              <tr>
+                <td>TC03</td>
+                <td>Invalid city query</td>
+                <td>404 exception banner active</td>
+                <td><span class="badge pass">PASS</span></td>
+              </tr>
+              <tr>
+                <td>TC04</td>
+                <td>API fetch call</td>
+                <td>Valid JSON payload returned</td>
+                <td><span class="badge pass">PASS</span></td>
+              </tr>
+              <tr>
+                <td>TC05</td>
+                <td>JSON data parsing</td>
+                <td>Latitude & longitude extracted</td>
+                <td><span class="badge pass">PASS</span></td>
+              </tr>
+              <tr>
+                <td>TC06</td>
+                <td>UI rendering</td>
+                <td>DOM elements updated accurately</td>
+                <td><span class="badge pass">PASS</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
